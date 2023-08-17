@@ -1,6 +1,6 @@
 > **Note** This repository is developed in .netstandard2.0
 
-[![NuGet Version](https://img.shields.io/nuget/v/ETagMWsvg?style=flat&logo=nuget)](https://www.nuget.org/packages/ETagMW/)
+[![NuGet Version](https://img.shields.io/nuget/v/ETagMW.svg?style=flat&logo=nuget)](https://www.nuget.org/packages/ETagMW/)
 [![Nuget Downloads](https://img.shields.io/nuget/dt/ETagMW.svg?style=flat&logo=nuget)](https://www.nuget.org/packages/ETagMW)
 
 This middleware provides a dynamic set of the ETag value returned to the caller in the header response.
