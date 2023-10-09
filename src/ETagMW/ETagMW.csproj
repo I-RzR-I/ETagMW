@@ -19,6 +19,10 @@
     <Title>RzR.MiddleWares.ETagMW (ETagMW)</Title>
     <LangVersion>9.0</LangVersion>
     <PackageIconUrl />
+
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>ETagMWSign.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeSource" Version="1.0.4.1723" />
+    <PackageReference Include="CodeSource" Version="1.0.5.1933" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
   </ItemGroup>
@@ -60,7 +64,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec
-      Command="PowerShell -NoProfile -ExecutionPolicy unrestricted -file $(SolutionDir)../build/pack.ps1 $(ConfigurationName)" />
+    <Exec Command="PowerShell -NoProfile -ExecutionPolicy unrestricted -file $(SolutionDir)../build/pack.ps1 $(ConfigurationName)" />
   </Target>
 </Project>
