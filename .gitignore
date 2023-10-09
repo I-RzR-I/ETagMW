@@ -268,3 +268,6 @@ wwwroot/lib/
 # Coverlet
 Report/
 coverage.*
+
+# Certificates
+*.pfx

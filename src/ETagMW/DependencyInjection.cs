@@ -37,7 +37,7 @@ namespace ETagMW
         /// <remarks></remarks>
         public static IApplicationBuilder UseETag(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<ETagMiddleware>(new ETagOption {UseOwnTag = false});
+            return app.UseMiddleware<ETagMiddleware>(new ETagOption { UseOwnTag = false });
         }
 
         /// <summary>
