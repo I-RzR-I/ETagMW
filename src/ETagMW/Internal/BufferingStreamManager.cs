@@ -1,12 +1,12 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 //  Assembly          : RzR.MiddleWares.ETagMW
 //  Author            : RzR
-//  Created           : 16-08-2023 16:08
+//  Created           : 07-05-2026 21:05
 // 
 //  Last Modified By : RzR
-//  Last Modified On : 13-05-2026 23:05
+//  Last Modified On : 13-05-2026 23:08
 //  ***********************************************************************
-//  <copyright file="MemoryStreamExtensions.cs" company="RzR SOFT & TECH">
+//  <copyright file="BufferingStreamManager.cs" company="RzR SOFT & TECH">
 //      Copyright (c) RzR. All rights reserved.
 //  </copyright>
 //  <contact>
@@ -18,35 +18,38 @@
 #region U S I N G
 
 using System.IO;
-using System.Security.Cryptography;
+using Microsoft.IO;
 
 #endregion
 
-namespace RzR.Web.Middleware.ETag.Extensions
+namespace RzR.Web.Middleware.ETag.Internal
 {
     /// -------------------------------------------------------------------------------------------------
     /// <summary>
-    ///     Memory stream extension.
+    ///     Shared recyclable buffer manager for middleware response buffering.
     /// </summary>
     /// =================================================================================================
-    internal static class MemoryStreamExtensions
+    internal static class BufferingStreamManager
     {
         /// -------------------------------------------------------------------------------------------------
         /// <summary>
-        ///     Calculate check sum for provided stream.
+        ///     (Immutable)
+        ///     Shared recyclable memory stream manager.
         /// </summary>
-        /// <param name="stream">Memory stream to be calculated.</param>
+        /// =================================================================================================
+        private static readonly RecyclableMemoryStreamManager Manager = new();
+
+        /// -------------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Create a pooled buffer stream.
+        /// </summary>
         /// <returns>
-        ///     The calculated checksum.
+        ///     The stream.
         /// </returns>
         /// =================================================================================================
-        internal static string CalculateChecksum(this MemoryStream stream)
+        internal static MemoryStream GetStream()
         {
-            using var hash = SHA256.Create();
-            stream.Position = 0;
-            var bytes = hash.ComputeHash(stream);
-
-            return $"\"{bytes.ToBase64String()}\"";
+            return Manager.GetStream(nameof(ResponseBufferingStream));
         }
     }
 }

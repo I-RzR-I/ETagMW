@@ -12,7 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{BCB2B3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E737BE4D-6DFF-4A67-A3D9-2AC58BFBBC07}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{A1FE652F-B7B1-4FB8-B29D-9A0D5F2BE266}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppCore", "tests\WebAppCore\WebAppCore.csproj", "{1A59A611-AE74-4915-9ABF-681819E909BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETagMW.Tests", "tests\ETagMW.Tests\ETagMW.Tests.csproj", "{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETagMW.Benchmarks", "benchmarks\ETagMW.Benchmarks\ETagMW.Benchmarks.csproj", "{24625102-212F-4BEE-8B27-C4D34821D149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +34,22 @@ Global
 		{1A59A611-AE74-4915-9ABF-681819E909BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A59A611-AE74-4915-9ABF-681819E909BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A59A611-AE74-4915-9ABF-681819E909BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24625102-212F-4BEE-8B27-C4D34821D149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24625102-212F-4BEE-8B27-C4D34821D149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24625102-212F-4BEE-8B27-C4D34821D149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24625102-212F-4BEE-8B27-C4D34821D149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1A59A611-AE74-4915-9ABF-681819E909BB} = {E737BE4D-6DFF-4A67-A3D9-2AC58BFBBC07}
+		{6F7A295A-9C57-4D7B-96D0-8472A6E2A51D} = {E737BE4D-6DFF-4A67-A3D9-2AC58BFBBC07}
+		{24625102-212F-4BEE-8B27-C4D34821D149} = {A1FE652F-B7B1-4FB8-B29D-9A0D5F2BE266}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		BuildVersion_UseUniversalClock = True

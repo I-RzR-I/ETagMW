@@ -1,27 +1,27 @@
 ﻿// ***********************************************************************
-//  Assembly         : RzR.MiddleWares.ETagMW
-//  Author           : RzR
-//  Created On       : 2023-08-16 16:15
+//  Assembly          : RzR.MiddleWares.ETagMW
+//  Author            : RzR
+//  Created           : 16-08-2023 16:08
 // 
 //  Last Modified By : RzR
-//  Last Modified On : 2023-08-16 18:55
-// ***********************************************************************
-//  <copyright file="ByteExtensions.cs" company="">
-//   Copyright (c) RzR. All rights reserved.
+//  Last Modified On : 13-05-2026 23:05
+//  ***********************************************************************
+//  <copyright file="ByteExtensions.cs" company="RzR SOFT & TECH">
+//      Copyright (c) RzR. All rights reserved.
 //  </copyright>
-// 
-//  <summary>
-//  </summary>
-// ***********************************************************************
+//  <contact>
+//      https://iamrzr.dev/contact
+//  </contact>
+//  <summary></summary>
+//  ***********************************************************************
 
-#region U S A G E S
+#region U S I N G
 
 using System;
-using CodeSource;
 
 #endregion
 
-namespace ETagMW.Extensions
+namespace RzR.Web.Middleware.ETag.Extensions
 {
     /// <summary>
     ///     Byte extension
@@ -34,9 +34,6 @@ namespace ETagMW.Extensions
         /// <param name="bytes"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        [CodeSource(
-            "https://raw.githubusercontent.com/I-RzR-I/DomainCommonExtensions/main/src/DomainCommonExtensions/DataTypeExtensions/ByteExtensions.cs",
-            "RzR", 1D)]
         internal static string ToBase64String(this byte[] bytes)
         {
             if (bytes == null)

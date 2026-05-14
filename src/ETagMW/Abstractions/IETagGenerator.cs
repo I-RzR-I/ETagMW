@@ -1,12 +1,12 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 //  Assembly          : RzR.MiddleWares.ETagMW
 //  Author            : RzR
-//  Created           : 16-08-2023 16:08
+//  Created           : 07-05-2026 18:05
 // 
 //  Last Modified By : RzR
-//  Last Modified On : 13-05-2026 23:05
+//  Last Modified On : 13-05-2026 21:21
 //  ***********************************************************************
-//  <copyright file="MemoryStreamExtensions.cs" company="RzR SOFT & TECH">
+//  <copyright file="IETagGenerator.cs" company="RzR SOFT & TECH">
 //      Copyright (c) RzR. All rights reserved.
 //  </copyright>
 //  <contact>
@@ -18,35 +18,29 @@
 #region U S I N G
 
 using System.IO;
-using System.Security.Cryptography;
+using Microsoft.AspNetCore.Http;
 
 #endregion
 
-namespace RzR.Web.Middleware.ETag.Extensions
+namespace RzR.Web.Middleware.ETag.Abstractions
 {
     /// -------------------------------------------------------------------------------------------------
     /// <summary>
-    ///     Memory stream extension.
+    ///     Abstraction for ETag generation.
     /// </summary>
     /// =================================================================================================
-    internal static class MemoryStreamExtensions
+    public interface IETagGenerator
     {
         /// -------------------------------------------------------------------------------------------------
         /// <summary>
-        ///     Calculate check sum for provided stream.
+        ///     Generate an entity tag for the current response body.
         /// </summary>
-        /// <param name="stream">Memory stream to be calculated.</param>
+        /// <param name="context">Current HTTP context.</param>
+        /// <param name="responseBody">Buffered response body.</param>
         /// <returns>
-        ///     The calculated checksum.
+        ///     A string.
         /// </returns>
         /// =================================================================================================
-        internal static string CalculateChecksum(this MemoryStream stream)
-        {
-            using var hash = SHA256.Create();
-            stream.Position = 0;
-            var bytes = hash.ComputeHash(stream);
-
-            return $"\"{bytes.ToBase64String()}\"";
-        }
+        string Generate(HttpContext context, Stream responseBody);
     }
 }
