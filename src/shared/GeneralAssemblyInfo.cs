@@ -29,13 +29,13 @@ using System.Resources;
 
 [assembly: AssemblyCompany("RzR ®")]
 [assembly: AssemblyProduct("ETag middleware")]
-[assembly: AssemblyCopyright("Copyright © 2023 RzR All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2023-2026 RzR All rights reserved.")]
 [assembly: AssemblyTrademark("® RzR™")]
 [assembly: AssemblyDescription("Add ETag variable in HTTP response")]
 
 [assembly: AssemblyMetadata("TermsOfService", "")]
 
-[assembly: AssemblyMetadata("ContactUrl", "")]
+[assembly: AssemblyMetadata("ContactUrl", "https://iamrzr.dev/contact")]
 [assembly: AssemblyMetadata("ContactName", "RzR")]
 [assembly: AssemblyMetadata("ContactEmail", "ddpRzR@hotmail.com")]
 

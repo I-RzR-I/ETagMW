@@ -1,65 +1,85 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <TargetFrameworkss>netstandard2.0</TargetFrameworkss>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Authors>RzR</Authors>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>PackageIcon.png</PackageIcon>
-    <NoWarn>$(NoWarn);CS8032</NoWarn>
-    <EnableNETAnalyzers>false</EnableNETAnalyzers>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageTags>HTTP;Response;ETag;Header;Variable;Middleware;Tracing;Trace</PackageTags>
-    <RepositoryUrl>https://github.com/I-RzR-I/ETagMW</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/I-RzR-I/ETagMW</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageDescription>Add ETag variable in HTTP response</PackageDescription>
-    <PackageTitle>RzR.MiddleWares.ETagMW (ETagMW)</PackageTitle>
-    <Title>RzR.MiddleWares.ETagMW (ETagMW)</Title>
-    <LangVersion>9.0</LangVersion>
-    <PackageIconUrl />
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Authors>RzR</Authors>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>PackageIcon.png</PackageIcon>
+		<NoWarn>$(NoWarn);CS8032</NoWarn>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<Deterministic>true</Deterministic>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageTags>HTTP;Response;ETag;Header;Variable;Middleware;Tracing;Trace</PackageTags>
+		<RepositoryUrl>https://github.com/I-RzR-I/ETagMW</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/I-RzR-I/ETagMW</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageDescription>Add ETag variable in HTTP response</PackageDescription>
+		<PackageTitle>RzR.MiddleWares.ETagMW (ETagMW)</PackageTitle>
+		<Title>RzR.MiddleWares.ETagMW (ETagMW)</Title>
+		<LangVersion>9.0</LangVersion>
+		<PackageIconUrl />
 
-  <ItemGroup>
-    <Compile Include="..\shared\GeneralAssemblyInfo.cs" Link="Properties\GeneralAssemblyInfo.cs" />
-  </ItemGroup>
+		<RootNamespace>RzR.Web.Middleware.ETag</RootNamespace>
+		<AssemblyName>RzR.Web.Middleware.ETag</AssemblyName>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
+	<ItemGroup>
+		<Compile Include="..\shared\GeneralAssemblyInfo.cs" Link="Properties\GeneralAssemblyInfo.cs" />
+	</ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\assets\PackageIcon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CodeSource" Version="1.0.6.933" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\assets\PackageIcon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Options\" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
 
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2022/8/5" />
-    </VisualStudio>
-  </ProjectExtensions>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="PowerShell -NoProfile -ExecutionPolicy unrestricted -file $(SolutionDir)../build/pack.ps1 $(ConfigurationName)" />
-  </Target>
+		<PackageReference Include="System.IO.Hashing"
+		                  Version="8.0.0"
+		                  Condition="
+                    '$(TargetFrameworkIdentifier)' == '.NETCoreApp'
+                    and $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), '6.0'))
+                  " />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)'=='.NETCoreApp'">
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Options\" />
+	</ItemGroup>
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties BuildVersion_StartDate="2022/8/5" />
+		</VisualStudio>
+	</ProjectExtensions>
 </Project>

@@ -1,12 +1,12 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 //  Assembly          : RzR.MiddleWares.ETagMW
 //  Author            : RzR
-//  Created           : 16-08-2023 16:08
+//  Created           : 07-05-2026 22:05
 // 
 //  Last Modified By : RzR
-//  Last Modified On : 13-05-2026 23:05
+//  Last Modified On : 13-05-2026 23:03
 //  ***********************************************************************
-//  <copyright file="MemoryStreamExtensions.cs" company="RzR SOFT & TECH">
+//  <copyright file="DisableETagAttribute.cs" company="RzR SOFT & TECH">
 //      Copyright (c) RzR. All rights reserved.
 //  </copyright>
 //  <contact>
@@ -17,36 +17,31 @@
 
 #region U S I N G
 
-using System.IO;
-using System.Security.Cryptography;
+using System;
+using RzR.Web.Middleware.ETag.Abstractions;
 
 #endregion
 
-namespace RzR.Web.Middleware.ETag.Extensions
+namespace RzR.Web.Middleware.ETag.Attributes
 {
     /// -------------------------------------------------------------------------------------------------
     /// <summary>
-    ///     Memory stream extension.
+    ///     Explicitly disable ETag processing for an endpoint.
     /// </summary>
+    /// <seealso cref="T:Attribute"/>
+    /// <seealso cref="T:RzR.Web.Middleware.ETag.Abstractions.IETagPolicyMetadata"/>
     /// =================================================================================================
-    internal static class MemoryStreamExtensions
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public sealed class DisableETagAttribute : Attribute, IETagPolicyMetadata
     {
         /// -------------------------------------------------------------------------------------------------
         /// <summary>
-        ///     Calculate check sum for provided stream.
+        ///     Gets a value indicating that ETag processing is disabled.
         /// </summary>
-        /// <param name="stream">Memory stream to be calculated.</param>
-        /// <returns>
-        ///     The calculated checksum.
-        /// </returns>
+        /// <value>
+        ///     True if this object is enabled, false if not.
+        /// </value>
         /// =================================================================================================
-        internal static string CalculateChecksum(this MemoryStream stream)
-        {
-            using var hash = SHA256.Create();
-            stream.Position = 0;
-            var bytes = hash.ComputeHash(stream);
-
-            return $"\"{bytes.ToBase64String()}\"";
-        }
+        public bool IsEnabled => false;
     }
 }
